@@ -91,20 +91,6 @@ ul {
   background-color: #000;
 }
 
-.login-icon {
-  margin-left: 20px;
-}
-
-.user-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-.user-icon:hover {
-  transform: scale(1.1);
-}
 
 /* Menu toggle para móviles */
 #menu-toggle {
