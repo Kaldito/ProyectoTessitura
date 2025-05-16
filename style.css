@@ -1,9 +1,13 @@
 /* Estilos generales */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 body {
@@ -30,12 +34,13 @@ ul {
 
 /* Navbar */
 .navbar {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
   padding: 10px 0;
+  height: 70px; /* Explicitly set navbar height */
 }
 
 .navbar .container {
@@ -82,7 +87,7 @@ ul {
 
 .menu li a.active::after,
 .menu li a:hover::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -90,7 +95,6 @@ ul {
   height: 2px;
   background-color: #000;
 }
-
 
 /* Menu toggle para móviles */
 #menu-toggle {
@@ -116,21 +120,25 @@ ul {
 
 /* Sección Home */
 .home-section {
-  padding: 80px 5%;
   background-color: #f9f9f9;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+  display: flex;
+  width: 100%;
 }
 
 .home-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 40px;
+  width: 100%;
+  height: 100%;
 }
 
 .home-text {
-  flex: 1;
+  width: 40%;
+  padding: 4rem;
+  animation: fadeInLeft 1s ease-out;
 }
 
 .home-text h1 {
@@ -140,38 +148,74 @@ ul {
 }
 
 .home-text .quote {
-  font-size: 22px;
+  font-size: 1.5rem;
   font-style: italic;
-  color: #555;
-  margin-bottom: 30px;
-  line-height: 1.4;
+  color: #444;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-weight: 300;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 4px solid #333;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  border: 2px solid #333;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #333;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .home-image {
   flex: 1;
   text-align: right;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInRight 1s ease-out;
 }
 
 .home-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px 0 0 32px;
 }
 
-.btn-primary {
-  display: inline-block;
-  padding: 12px 30px;
-  background-color: #333;
-  color: #fff;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: all 0.3s;
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.btn-primary:hover {
-  background-color: #000;
-  transform: translateY(-2px);
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Sección About Us */
@@ -193,7 +237,7 @@ ul {
 }
 
 .section-header h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -218,34 +262,54 @@ ul {
 
 .about-card {
   background-color: #fff;
-  border-radius: 8px;
-  padding: 30px;
+  border-radius: 12px;
+  padding: 40px 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .about-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .about-icon {
-  font-size: 40px;
+  font-size: 2.5rem;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+.about-icon::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: #333;
+  opacity: 0.2;
 }
 
 .about-card h3 {
-  font-size: 24px;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
   color: #222;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .about-card p {
   color: #555;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
 }
 
 /* Sección de Servicios */
@@ -262,43 +326,82 @@ ul {
 
 .service-card {
   background-color: #fff;
-  border-radius: 8px;
-  padding: 30px;
+  border-radius: 12px;
+  padding: 40px 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .service-card h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
   color: #222;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.service-card h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #333;
+  opacity: 0.2;
 }
 
 .service-card p {
-  margin-bottom: 20px;
   color: #555;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
 }
 
 .service-card ul {
-  padding-left: 20px;
+  padding-left: 0;
+  margin: 0;
 }
 
 .service-card ul li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   position: relative;
-  padding-left: 15px;
+  padding-left: 20px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .service-card ul li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: #333;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.service-icon {
+  font-size: 1.8rem;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.1);
 }
 
 /* Sección de Proyectos Ejecutivos */
@@ -375,7 +478,7 @@ ul {
 }
 
 .project-content ul li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: #333;
@@ -456,7 +559,7 @@ ul {
 }
 
 .gallery-header h1::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -550,44 +653,84 @@ ul {
 footer {
   background-color: #333;
   color: #fff;
-  padding: 30px 0;
+  padding: 40px 0;
   margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
+}
+
+.footer-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .footer-logo-img {
   height: 50px;
   width: auto;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #fff;
   padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo-img:hover {
+  transform: scale(1.05);
 }
 
 .footer-text {
   text-align: center;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.footer-text p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }
 
 .footer-social {
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  flex-shrink: 0;
+  align-items: center;
 }
 
-.social-logo {
-  height: 30px;
-  width: 30px;
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background-color: #fff;
-  padding: 2px;
-  transition: transform 0.3s;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  line-height: 1;
 }
 
-.social-logo:hover {
-  transform: scale(1.1);
+.social-link i {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: #333;
+  color: #fff;
 }
 
 /* Media queries específicas para la sección de proyectos */
@@ -603,7 +746,7 @@ footer {
   .projects-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .construction-card {
     grid-column: 2;
     grid-row: 2;
@@ -629,11 +772,11 @@ footer {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .project-card {
     grid-column: auto;
   }
-  
+
   .construction-card {
     grid-column: auto;
   }
@@ -644,11 +787,11 @@ footer {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .project-card {
     grid-column: auto;
   }
-  
+
   .construction-card {
     grid-column: auto;
   }
@@ -659,7 +802,7 @@ footer {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .project-image {
     height: 180px;
   }
@@ -670,15 +813,15 @@ footer {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .project-image {
     height: 150px;
   }
-  
+
   .project-content {
     padding: 15px;
   }
-  
+
   .project-content h3 {
     font-size: 18px;
   }
@@ -759,7 +902,7 @@ footer {
 }
 
 .gallery-header h1::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -849,90 +992,62 @@ footer {
   color: #fff;
 }
 
-/* Footer */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 30px 0;
-  margin-top: 50px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-logo-img {
-  height: 50px;
-  width: auto;
-  border-radius: 5px;
-  background-color: #fff;
-  padding: 5px;
-}
-
-.footer-text {
-  text-align: center;
-}
-
-.footer-social {
-  display: flex;
-  gap: 15px;
-}
-
-.social-logo {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background-color: #fff;
-  padding: 2px;
-  transition: transform 0.3s;
-}
-
-.social-logo:hover {
-  transform: scale(1.1);
-}
-
 /* Media Queries para Responsividad General */
 /* Pantallas grandes (computadoras) */
 @media screen and (min-width: 1200px) {
   .home-text h1 {
     font-size: 48px;
   }
-  
+
   .home-text .quote {
-    font-size: 24px;
+    font-size: 1.8rem;
   }
 }
 
 /* Tablets y pantallas medianas */
 @media screen and (max-width: 992px) {
   .home-content {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
+    padding: 2rem;
   }
-  
+
+  .home-text {
+    width: 100%;
+    padding: 2rem 0;
+  }
+
+  .home-text .quote {
+    border-left: none;
+    padding-left: 0;
+    border-bottom: 4px solid #333;
+    padding-bottom: 1rem;
+    margin: 0 auto 2rem;
+    max-width: 600px;
+  }
+
   .home-image {
-    margin-bottom: 30px;
-    text-align: center;
+    width: 100%;
+    height: 50vh;
+    margin-top: 2rem;
   }
-  
-  .home-text h1 {
-    font-size: 36px;
+
+  .home-image img {
+    border-radius: 32px;
   }
-  
+
   .gallery-container {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .contact-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-info-card {
     order: 2;
   }
-  
+
   .map {
     height: 400px;
   }
@@ -943,7 +1058,7 @@ footer {
   .menu-icon {
     display: flex;
   }
-  
+
   .menu {
     position: absolute;
     top: 70px;
@@ -959,43 +1074,50 @@ footer {
     transition: transform 0.3s ease;
     z-index: 999;
   }
-  
+
   .menu.active {
     transform: translateY(0);
   }
-  
+
   .home-section {
-    padding: 60px 5%;
+    height: auto;
+    min-height: calc(100vh - 70px);
   }
-  
+
   .home-text h1 {
-    font-size: 32px;
+    font-size: 36px;
   }
-  
+
   .home-text .quote {
-    font-size: 18px;
+    font-size: 1.3rem;
   }
-  
+
   .services-grid,
   .about-cards {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-details {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-content {
     flex-direction: column;
+    text-align: center;
     gap: 20px;
   }
-  
+
+  .footer-logo {
+    margin-bottom: 10px;
+  }
+
   .footer-text {
     order: 2;
   }
-  
+
   .footer-social {
     order: 3;
+    margin-top: 10px;
   }
 }
 
@@ -1004,33 +1126,51 @@ footer {
   .gallery-container {
     grid-template-columns: 1fr;
   }
-  
+
   .home-text h1 {
     font-size: 28px;
   }
-  
+
   .gallery-header h1,
   .section-header h2 {
     font-size: 28px;
   }
-  
+
   .service-card,
   .about-card,
   .project-card {
     padding: 20px;
   }
-  
+
   .map {
     height: 300px;
   }
-  
+
   .about-icon {
     font-size: 32px;
   }
-  
+
   .about-card h3,
   .project-content h3 {
     font-size: 20px;
+  }
+
+  .home-text h1 {
+    font-size: 28px;
+  }
+
+  .home-text .quote {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .home-image {
+    height: 40vh;
+  }
+
+  .btn-primary {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -1039,37 +1179,42 @@ footer {
   .navbar .container {
     padding: 0 10px;
   }
-  
+
   .logo-img {
     height: 40px;
   }
-  
+
   .home-section {
     padding: 40px 3%;
   }
-  
-  .btn-primary, .btn-secondary {
+
+  .btn-primary,
+  .btn-secondary {
     padding: 10px 20px;
     font-size: 14px;
   }
-  
+
   .section-header h2,
   .gallery-header h1 {
     font-size: 24px;
   }
-  
+
   .section-header p,
   .gallery-header p {
     font-size: 16px;
   }
-  
+
   .footer-logo-img {
     height: 40px;
   }
-  
-  .social-logo {
-    height: 25px;
-    width: 25px;
+
+  .social-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-link i {
+    font-size: 1rem;
   }
 }
 
@@ -1078,43 +1223,48 @@ footer {
   .logo-img {
     height: 35px;
   }
-  
+
   .menu-icon {
     width: 25px;
     height: 18px;
   }
-  
+
   .home-text h1 {
     font-size: 24px;
   }
-  
+
   .home-text .quote {
-    font-size: 16px;
+    font-size: 1rem;
   }
-  
-  .btn-primary, .btn-secondary {
+
+  .btn-primary,
+  .btn-secondary {
     padding: 8px 16px;
     font-size: 12px;
   }
-  
+
   .service-card h3,
   .contact-info-card h3,
   .about-card h3,
   .project-content h3 {
     font-size: 18px;
   }
-  
+
   .contact-item h4 {
     font-size: 16px;
   }
-  
+
   .footer-logo-img {
     height: 35px;
   }
-  
-  .social-logo {
-    height: 20px;
-    width: 20px;
+
+  .social-link {
+    width: 25px;
+    height: 25px;
+  }
+
+  .social-link i {
+    font-size: 0.9rem;
   }
 }
 
@@ -1127,19 +1277,19 @@ footer {
       "proyecto gestoria"
       "administracion construccion";
   }
-  
+
   .projects-grid .project-card:nth-child(1) {
     grid-area: proyecto;
   }
-  
+
   .projects-grid .project-card:nth-child(2) {
     grid-area: gestoria;
   }
-  
+
   .projects-grid .project-card:nth-child(3) {
     grid-area: administracion;
   }
-  
+
   .projects-grid .project-card:nth-child(4) {
     grid-area: construccion;
   }
@@ -1148,22 +1298,29 @@ footer {
 /* Orientación horizontal en dispositivos móviles */
 @media screen and (max-height: 500px) and (orientation: landscape) {
   .home-section {
-    padding: 40px 5%;
+    height: auto;
+    min-height: calc(100vh - 70px);
   }
-  
+
   .home-content {
     flex-direction: row;
-    gap: 20px;
+    padding: 1rem;
   }
-  
+
+  .home-text {
+    width: 50%;
+    padding: 1rem;
+  }
+
   .home-image {
-    margin-bottom: 0;
+    width: 50%;
+    height: 100%;
   }
-  
+
   .section-header {
     margin-bottom: 30px;
   }
-  
+
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1174,19 +1331,19 @@ footer {
   .container {
     max-width: 1600px;
   }
-  
+
   .home-text h1 {
     font-size: 56px;
   }
-  
+
   .home-text .quote {
     font-size: 28px;
   }
-  
+
   .section-header h2 {
     font-size: 42px;
   }
-  
+
   .projects-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1197,24 +1354,24 @@ footer {
   .container {
     max-width: 2000px;
   }
-  
+
   .home-text h1 {
     font-size: 64px;
   }
-  
+
   .home-text .quote {
     font-size: 32px;
   }
-  
+
   .section-header h2 {
     font-size: 48px;
   }
-  
+
   .projects-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
   }
-  
+
   .project-image {
     height: 250px;
   }
@@ -1226,5 +1383,29 @@ footer {
   .card-image img,
   .home-image img {
     image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Media Queries para el Footer */
+@media screen and (max-width: 480px) {
+  footer {
+    padding: 30px 0;
+  }
+
+  .footer-logo-img {
+    height: 40px;
+  }
+
+  .social-link {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social-link i {
+    font-size: 1rem;
+  }
+
+  .footer-text p {
+    font-size: 0.85rem;
   }
 }
